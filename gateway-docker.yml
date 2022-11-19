@@ -25,7 +25,7 @@ logging.level.org.springframework.cloud.gateway.route.RouteDefinitionRouteLocato
 logging.level.org.springframework.cloud.gateway: TRACE
 
 
-app.refresh.scope.property: hello i am refresh scope
+app.refresh.scope.property: hello i am refresh scope updated
 
 
 spring.cloud.gateway.routes:
