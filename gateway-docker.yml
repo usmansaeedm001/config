@@ -1,0 +1,52 @@
+server:port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka/
+    initial-instance-info-replication-interval-seconds: 5
+    registry-fetch-interval-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+  instance:
+    preferIpAddress: true
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      discovery:locator:
+        lower-case-service-id: true
+  zipkin:
+    base-url: zipkin:9411
+  sleuth:sampler:probability: 1.0
+
+logging.level.root: INFO
+logging.level.org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+logging.level.org.springframework.cloud.gateway: TRACE
+
+
+app.refresh.scope.property: hello i am refresh scope
+
+
+spring.cloud.gateway.routes:
+
+  - id: composite-service
+    uri: lb://composite-service
+    predicates:
+      - Path=/composite-service/**
+
+  - id: customer-service
+    uri: lb://customer-service
+    predicates:
+      - Path=/customer-service/**
+
+  - id: account-service
+    uri: lb://account-service
+    predicates:
+      - Path=/account-service/**
+
+  - id: card-service
+    uri: lb://card-service
+    predicates:
+      - Path=/card-service/**
+
