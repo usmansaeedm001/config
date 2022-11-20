@@ -33,20 +33,27 @@ spring.cloud.gateway.routes:
   - id: composite-service
     uri: lb://composite-service
     predicates:
-      - Path=/composite-service/**
+      - Path=/composite/**
+    filters:
+      - RewritePath=/composite/(?<path>.*), /$\{path}
 
   - id: customer-service
     uri: lb://customer-service
     predicates:
-      - Path=/customer-service/**
+      - Path=/customer/**
+    filters:
+      - RewritePath=/customer/(?<path>.*), /$\{path}
 
   - id: account-service
     uri: lb://account-service
     predicates:
-      - Path=/account-service/**
+      - Path=/account/**
+    filters:
+      - RewritePath=/account/(?<path>.*), /$\{path}
 
   - id: card-service
     uri: lb://card-service
     predicates:
-      - Path=/card-service/**
-
+      - Path=/card/**
+    filters:
+      - RewritePath=/card/(?<path>.*), /$\{path}
