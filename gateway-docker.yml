@@ -24,6 +24,8 @@ logging.level.root: INFO
 logging.level.org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
 logging.level.org.springframework.cloud.gateway: TRACE
 
+management.endpoints.web.exposure.include: *
+management.endpoints.enabled-by-default: true
 
 app.refresh.scope.property: hello i am refresh scope updated
 
